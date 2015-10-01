@@ -22,7 +22,10 @@ public class QuizActivity extends AppCompatActivity {
     private Button mFalseButton;
     private ImageButton mNextButton;
     private ImageButton mPrevButton;
+<<<<<<< HEAD
     private Button mCheatButton;
+=======
+>>>>>>> origin/master
     private TextView mQuestionTextView;
     private Question[] mQuestionBank = new Question[] {
             new Question(R.string.question_oceans, true),
@@ -32,7 +35,10 @@ public class QuizActivity extends AppCompatActivity {
             new Question(R.string.question_asia, true),
     };
     private int mCurrentIndex = 0;
+<<<<<<< HEAD
     private boolean mIsCheater;
+=======
+>>>>>>> origin/master
 
     private void updateQuestion() {
         int question = mQuestionBank[mCurrentIndex].getTextResId();
@@ -42,6 +48,7 @@ public class QuizActivity extends AppCompatActivity {
     private void checkAnswer(boolean userPressedTrue) {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
         int messageResId = 0;
+<<<<<<< HEAD
         if (mIsCheater) {
             messageResId = R.string.judgment_toast;
         } else {
@@ -50,6 +57,12 @@ public class QuizActivity extends AppCompatActivity {
             } else {
                 messageResId = R.string.incorrect_toast;
             }
+=======
+        if (userPressedTrue == answerIsTrue) {
+            messageResId = R.string.correct_toast;
+        } else {
+            messageResId = R.string.incorrect_toast;
+>>>>>>> origin/master
         }
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
                 .show();
@@ -91,6 +104,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+<<<<<<< HEAD
                 mIsCheater = false;
                 updateQuestion();
             }
@@ -144,6 +158,26 @@ public class QuizActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
         Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
+=======
+                updateQuestion();
+            }
+        });
+
+        mPrevButton = (ImageButton) findViewById(R.id.prev_button);
+        mPrevButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCurrentIndex = (mCurrentIndex - 1);
+                if(mCurrentIndex<0){
+                    mCurrentIndex = mQuestionBank.length - 1;
+                }
+
+                updateQuestion();
+            }
+        });
+
+        updateQuestion();
+>>>>>>> origin/master
     }
 
     @Override
