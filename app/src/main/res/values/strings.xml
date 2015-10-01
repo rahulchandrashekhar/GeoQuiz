@@ -2,11 +2,24 @@
     <string name="app_name">GeoQuiz</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="question_text">Constantinople is the largest city in Turkey.</string>
     <string name="true_button">True</string>
     <string name="false_button">False</string>
+    <string name="next_button">Next</string>
+    <string name="next_description">Move to the next question</string>
+    <string name="prev_button">Previous</string>
+    <string name="prev_description">Move to the previous question</string>
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
     <string name="menu_settings">Settings</string>
     <string name="action_settings">Settings</string>
+    <string name="question_oceans">The Pacific Ocean is surrounded by a large number of active volcanoes.</string>
+<string name="question_mideast">Iraq is the largest country in the Middle East.</string>
+    <string name="question_africa">The Sshara Desert covers around one tenth the total land of Africa.</string>
+<string name="question_americas">California has the longest coastline in the United States.</string>
+<string name="question_asia">Asia houses both the highest and lowest points on Earth.</string>
+    <string name="warning_text">Are you sure you want to do this?</string>
+    <string name="show_answer_button">Show Answer</string>
+    <string name="cheat_button">Cheat!</string>
+    <string name="judgment_toast">Cheating is wrong.</string>
+    <string name="title_activity_cheat">CheatActivity</string>
 </resources>
