@@ -33,7 +33,7 @@ public class QuizActivity extends AppCompatActivity {
             new Question(R.string.question_asia, true),
     };
     private int mCurrentIndex = 0;
-    private boolean mIsCheater;
+    private boolean mIsCheater[] = new boolean[]{false, false, false, false, false};
 
     private void updateQuestion() {
         int question = mQuestionBank[mCurrentIndex].getTextResId();
@@ -43,7 +43,7 @@ public class QuizActivity extends AppCompatActivity {
     private void checkAnswer(boolean userPressedTrue) {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
         int messageResId = 0;
-        if (mIsCheater) {
+        if (mIsCheater[mCurrentIndex]) {
             messageResId = R.string.judgment_toast;
         } else {
             if (userPressedTrue == answerIsTrue) {
@@ -92,7 +92,6 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
-                mIsCheater = false;
                 updateQuestion();
             }
         });
@@ -105,7 +104,6 @@ public class QuizActivity extends AppCompatActivity {
                 if(mCurrentIndex<0){
                     mCurrentIndex = mQuestionBank.length - 1;
                 }
-                mIsCheater = false;
                 updateQuestion();
             }
         });
@@ -123,7 +121,7 @@ public class QuizActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
-            mIsCheater = savedInstanceState.getBoolean(KEY_CHEAT_STATE, false);
+            mIsCheater = savedInstanceState.getBooleanArray(KEY_CHEAT_STATE);
         }
 
         updateQuestion();
@@ -137,7 +135,7 @@ public class QuizActivity extends AppCompatActivity {
             if (data == null) {
                 return;
             }
-            mIsCheater = CheatActivity.wasAnswerShown(data);
+            mIsCheater[mCurrentIndex] = CheatActivity.wasAnswerShown(data);
         }
     }
 
@@ -146,7 +144,7 @@ public class QuizActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
         Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
-        savedInstanceState.putBoolean(KEY_CHEAT_STATE, mIsCheater);
+        savedInstanceState.putBooleanArray(KEY_CHEAT_STATE, mIsCheater);
     }
 
     @Override
