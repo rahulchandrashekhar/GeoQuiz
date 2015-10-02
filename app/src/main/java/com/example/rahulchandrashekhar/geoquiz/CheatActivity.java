@@ -37,6 +37,13 @@ public class CheatActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putBoolean(ANS_STATE, mDidUserCheat);
+        savedInstanceState.putBoolean(ANS, mAnswerIsTrue);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cheat);
@@ -64,9 +71,10 @@ public class CheatActivity extends AppCompatActivity {
             mAnswerIsTrue = savedInstanceState.getBoolean(ANS, false);
             if (mAnswerIsTrue) {
                 mAnswerTextView.setText(R.string.true_button);
-                } else {
+            }
+            else {
                 mAnswerTextView.setText(R.string.false_button);
-                }
+            }
             setAnswerShownResult(mDidUserCheat);
         }
     }

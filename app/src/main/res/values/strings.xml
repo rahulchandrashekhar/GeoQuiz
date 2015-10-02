@@ -17,12 +17,9 @@
     <string name="question_africa">The Sshara Desert covers around one tenth the total land of Africa.</string>
 <string name="question_americas">California has the longest coastline in the United States.</string>
 <string name="question_asia">Asia houses both the highest and lowest points on Earth.</string>
-<<<<<<< HEAD
     <string name="warning_text">Are you sure you want to do this?</string>
     <string name="show_answer_button">Show Answer</string>
     <string name="cheat_button">Cheat!</string>
     <string name="judgment_toast">Cheating is wrong.</string>
     <string name="title_activity_cheat">CheatActivity</string>
-=======
->>>>>>> origin/master
 </resources>
