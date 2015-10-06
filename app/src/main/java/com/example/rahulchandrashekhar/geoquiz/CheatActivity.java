@@ -25,6 +25,7 @@ public class CheatActivity extends AppCompatActivity {
 
     private boolean mAnswerIsTrue;
     private TextView mAnswerTextView;
+    private TextView mAPITextView;
     private Button mShowAnswer;
     private static final String ANS_STATE = "cheatAnswerShown";
     private static final String ANS = "answerIsShown";
@@ -53,6 +54,9 @@ public class CheatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cheat);
 
         mAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
+
+        mAPITextView = (TextView) findViewById(R.id.api_text_view);
+        mAPITextView.setText("API Level " + String.valueOf(Build.VERSION.SDK_INT));
 
         mAnswerTextView = (TextView) findViewById(R.id.answer_text_view);
         mShowAnswer = (Button) findViewById(R.id.show_answer_button);
@@ -94,12 +98,15 @@ public class CheatActivity extends AppCompatActivity {
         if(savedInstanceState != null) {
             mDidUserCheat = savedInstanceState.getBoolean(ANS_STATE, false);
             mAnswerIsTrue = savedInstanceState.getBoolean(ANS, false);
-            if (mAnswerIsTrue) {
-                mAnswerTextView.setText(R.string.true_button);
+            if (mDidUserCheat) {
+                if (mAnswerIsTrue) {
+                    mAnswerTextView.setText(R.string.true_button);
+                }
+                else {
+                    mAnswerTextView.setText(R.string.false_button);
+                }
             }
-            else {
-                mAnswerTextView.setText(R.string.false_button);
-            }
+
             setAnswerShownResult(mDidUserCheat);
         }
     }
